@@ -1,0 +1,41 @@
+{
+	"version": "0.2.0",
+	"compounds": [
+		{
+			"name": "Install &  Debug (Debugger console)",
+			"configurations": ["Debug (Debugger console)"],
+			"preLaunchTask": "Install"
+		},
+		{
+			"name": "Install & Debug (Terminal)",
+			"configurations": ["Debug (Terminal)"],
+			"preLaunchTask": "Install"
+		}
+	],
+	"configurations": [
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug (Debugger console)",
+			"cwd": "${workspaceRoot}",
+			"outputCapture": "std",
+			"console": "internalConsole",
+			"runtimeExecutable": "npm",
+			// "program": "${workspaceFolder}/src/main.js",
+			// "outFiles": ["${workspaceFolder}/build/**/*.js"],
+			"runtimeArgs": ["run", "dev"]
+		},
+		{
+			"type": "node",
+			"request": "launch",
+			"name": "Debug (Terminal)",
+			"cwd": "${workspaceRoot}",
+			"outputCapture": "std",
+			"console": "integratedTerminal",
+			"runtimeExecutable": "npm",
+			// "program": "${workspaceFolder}/src/main.js",
+			// "outFiles": ["${workspaceFolder}/build/**/*.js"],
+			"runtimeArgs": ["run", "dev"]
+		}
+	]
+}
