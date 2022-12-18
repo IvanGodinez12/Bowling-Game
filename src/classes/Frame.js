@@ -1,13 +1,13 @@
 module.exports = class Frame {
 	constructor({ number }) {
 		this.bonusPoints = 0;
-		this.totalScore = 0;
 		this.knockedDownPins = {
 			firstThrow: [],
 			secondThrow: [],
 		};
 		this.number = number;
 		this.standingPins = [];
+		this.totalScore = 0;
 	}
 
 	get firstThrowScore() {

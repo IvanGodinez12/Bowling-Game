@@ -1,6 +1,5 @@
 module.exports = class LastFrame {
 	constructor({ number }) {
-		this.totalScore = 0;
 		this.knockedDownPins = {
 			firstThrow: [],
 			secondThrow: [],
@@ -8,6 +7,7 @@ module.exports = class LastFrame {
 		};
 		this.number = number || 10;
 		this.standingPins = [];
+		this.totalScore = 0;
 	}
 
 	get firstThrowScore() {
@@ -15,7 +15,7 @@ module.exports = class LastFrame {
 	}
 
 	get frameScore() {
-		return this.roundScore /*+ this.bonusPoints*/;
+		return this.roundScore;
 	}
 
 	get spares() {

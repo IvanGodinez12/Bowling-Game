@@ -5,6 +5,8 @@ const LastFrame = require('./LastFrame.js');
 
 module.exports = class Game {
 	constructor() {
+		this.finalScore = 0;
+		this.rounds = 10;
 		this.roundsFrames = [];
 		this.pins = [];
 	}
@@ -115,24 +117,11 @@ module.exports = class Game {
 		return this.roundsFrames;
 	}
 
-	print() {
-		let string = {
-			top: '|',
-			middle: '|',
-			bottom: '|',
-		};
-		for (let roundFrame of this.roundsFrames) {
-			string.top += ` ${roundFrame.number} |`;
-			string.middle += ` ${roundFrame.knockedDownPins.firstThrow.length} - ${roundFrame.knockedDownPins.secondThrow.length} |`;
-			string.bottom += ` ${roundFrame.totalScore} |`;
-		}
-		console.log(string.top);
-		console.log(string.middle);
-		console.log(string.bottom);
-	}
+	print() {}
 
 	start({ print } = { print: true }) {
 		this.calculate();
+		this.finalScore = this.roundsFrames[this.roundsFrames.length - 1].totalScore;
 		if (print) this.print();
 		return this.roundsFrames;
 	}
