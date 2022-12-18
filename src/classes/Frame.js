@@ -1,24 +1,39 @@
 module.exports = class Frame {
-	constructor() {
-		this.frameScore = 0;
-		this.currentScore = 0;
+	constructor({ number }) {
+		this.bonusPoints = 0;
+		this.totalScore = 0;
 		this.knockedDownPins = {
-			first: [],
-			second: [],
+			firstThrow: [],
+			secondThrow: [],
 		};
+		this.number = number;
+		this.standingPins = [];
 	}
+
+	get firstThrowScore() {
+		return this.knockedDownPins.firstThrow.length;
+	}
+
+	get frameScore() {
+		return this.roundScore + this.bonusPoints;
+	}
+
 	get spare() {
-		if (this.knockedDownPins.first.length + this.knockedDownPins.second.length == 10) {
-			return true;
-		} else {
-			return false;
-		}
+		if (this.strike) return false;
+		else if (this.knockedDownPins.firstThrow.length + this.knockedDownPins.secondThrow.length == 10) return true;
+		else return false;
 	}
+
+	get roundScore() {
+		return this.knockedDownPins.firstThrow.length + this.knockedDownPins.secondThrow.length;
+	}
+
+	get secondThrowScore() {
+		return this.knockedDownPins.secondThrow.length;
+	}
+
 	get strike() {
-		if (this.knockedDownPins.first.length == 10) {
-			return true;
-		} else {
-			return false;
-		}
+		if (this.knockedDownPins.firstThrow.length == 10) return true;
+		else return false;
 	}
 };

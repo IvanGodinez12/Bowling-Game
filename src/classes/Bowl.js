@@ -1,9 +1,9 @@
 module.exports = class Bowl {
 	constructor() {
-		this.throwPower = 0;
+		this.precision = 0;
 	}
 
 	throw() {
-		this.throwPower = Math.floor(Math.random() * 100) + 1;
+		this.precision = Math.floor(Math.random() * 100) + 1;
 	}
 };
