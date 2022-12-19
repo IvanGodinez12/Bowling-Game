@@ -11,7 +11,7 @@ describe('Bowl', () => {
 		);
 	});
 	it('should get a random number in the precision once throw', () => {
-		while (bowl.precision == 0) {
+		while (bowl.precision === 0) {
 			bowl.throw();
 		}
 		expect(bowl).toEqual(

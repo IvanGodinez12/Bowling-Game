@@ -8,16 +8,16 @@
   - [Tecnologías](#tecnologías)
   - [Requerimientos funcionales](#requerimientos-funcionales)
   - [Recursos](#recursos)
-  
+
 # El Juego de boliche
 
-  Atributo |  Valor
- --- | --- |
- Tipo | Colaborativo
- Estrategia | Mob Programming
- Modo | Síncrono
- Dedicación | 6 horas
- Duración | 2 días
+| Atributo   | Valor           |
+| ---------- | --------------- |
+| Tipo       | Colaborativo    |
+| Estrategia | Mob Programming |
+| Modo       | Síncrono        |
+| Dedicación | 6 horas         |
+| Duración   | 2 días          |
 
 ## Objetivos
 
@@ -82,11 +82,11 @@
 - ESLINT
   - [Documentación](https://eslint.org/)
 - Desarrollo basado en pruebas
-  - [The Absolute Beginner’s Guide to Test Driven Development, with a Practical Example](https://medium.com/@bethqiang/the-absolute-beginners-guide-to-test-driven-development-with-a-practical-example-c39e73a11631) 
+  - [The Absolute Beginner’s Guide to Test Driven Development, with a Practical Example](https://medium.com/@bethqiang/the-absolute-beginners-guide-to-test-driven-development-with-a-practical-example-c39e73a11631)
   - [Learn Test Driven Development (TDD)](https://github.com/dwyl/learn-tdd)
   - [Fundamentals of TDD](https://thoughtbot.com/upcase/fundamentals-of-tdd)
   - [Getting Started](https://jestjs.io/docs/en/getting-started)
-  - [Getting Started With Jest](https://www.valentinog.com/blog/jest/) 
+  - [Getting Started With Jest](https://www.valentinog.com/blog/jest/)
   - [Testing JavaScript with Jest](https://flaviocopes.com/jest/)
 - Analizadores de código estático
   - [CodeClimate](https://codeclimate.com/)

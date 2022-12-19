@@ -1,3 +1,4 @@
+const Table = require('cli-table');
 const Bowl = require('./Bowl.js');
 const Frame = require('./Frame.js');
 const Pin = require('./Pin.js');
@@ -43,17 +44,17 @@ module.exports = class Game {
 	round({ number }) {
 		let frame = new Frame({ number });
 		this.launch();
-		if (this.pins.some((pin) => pin.standing == true)) {
-			frame.knockedDownPins.firstThrow = this.pins.filter((pin) => pin.standing == false);
-			this.pins = this.pins.filter((pin) => pin.standing == true);
+		if (this.pins.some((pin) => pin.standing === true)) {
+			frame.knockedDownPins.firstThrow = this.pins.filter((pin) => pin.standing === false);
+			this.pins = this.pins.filter((pin) => pin.standing === true);
 			this.launch();
-			frame.knockedDownPins.secondThrow = this.pins.filter((pin) => pin.standing == false);
-			frame.standingPins = this.pins.filter((pin) => pin.standing == true);
-			this.pins = this.pins.filter((pin) => pin.standing == true);
+			frame.knockedDownPins.secondThrow = this.pins.filter((pin) => pin.standing === false);
+			frame.standingPins = this.pins.filter((pin) => pin.standing === true);
+			this.pins = this.pins.filter((pin) => pin.standing === true);
 		} else {
-			frame.knockedDownPins.firstThrow = this.pins.filter((pin) => pin.standing == false);
-			frame.standingPins = this.pins.filter((pin) => pin.standing == true);
-			this.pins = this.pins.filter((pin) => pin.standing == true);
+			frame.knockedDownPins.firstThrow = this.pins.filter((pin) => pin.standing === false);
+			frame.standingPins = this.pins.filter((pin) => pin.standing === true);
+			this.pins = this.pins.filter((pin) => pin.standing === true);
 		}
 		return frame;
 	}
@@ -63,12 +64,12 @@ module.exports = class Game {
 		let possibleThrows = ['firstThrow', 'secondThrow', 'thirdThrow'];
 		for (let throwTurn of possibleThrows) {
 			this.launch();
-			lastFrame.knockedDownPins[throwTurn] = this.pins.filter((pin) => pin.standing == false);
-			this.pins = this.pins.filter((pin) => pin.standing == true);
+			lastFrame.knockedDownPins[throwTurn] = this.pins.filter((pin) => pin.standing === false);
+			this.pins = this.pins.filter((pin) => pin.standing === true);
 			if (lastFrame.strikes[throwTurn]) {
 				if (possibleThrows[possibleThrows.indexOf(throwTurn)] != 'thirdThrow') this.setupPins();
 			} else if (possibleThrows[possibleThrows.indexOf(throwTurn)] == 'secondThrow') {
-				if (lastFrame.spares['firstPairThrows']) this.setupPins();
+				if (lastFrame.spares.firstPairThrows) this.setupPins();
 				else break;
 			}
 		}
@@ -81,7 +82,6 @@ module.exports = class Game {
 			let roundFrame = i < 10 ? this.round({ number: i }) : this.lastRound({ number: i });
 			this.roundsFrames.push(roundFrame);
 		}
-
 		for (let [i, roundFrame] of this.roundsFrames.entries()) {
 			if (i < 8) {
 				if (roundFrame.strike) {
@@ -117,7 +117,24 @@ module.exports = class Game {
 		return this.roundsFrames;
 	}
 
-	print() {}
+	print() {
+		let table = new Table({
+			chars: { mid: '', 'left-mid': '', 'mid-mid': '', 'right-mid': '' },
+			colAligns: ['middle', 'middle', 'middle', 'middle', 'middle', 'middle', 'middle', 'middle', 'middle', 'middle'],
+			head: this.roundsFrames.map((roundFrame) => roundFrame.number),
+		});
+		table.push(
+			this.roundsFrames.map(
+				(roundFrame) =>
+					`${roundFrame.firstThrowScore} | ${roundFrame.secondThrowScore}${
+						roundFrame.thirdThrowScore >= 0 ? ` | ${roundFrame.thirdThrowScore}` : ''
+					}`
+			),
+			this.roundsFrames.map((roundFrame) => roundFrame.totalScore)
+		);
+		console.info('Bowling game results');
+		console.log(table.toString());
+	}
 
 	start({ print } = { print: true }) {
 		this.calculate();
