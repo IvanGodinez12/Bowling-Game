@@ -20,10 +20,10 @@ module.exports = class LastFrame {
 
 	get spares() {
 		return {
-			firstPairThrows: this.strikes.first
+			firstPairThrows: this.strikes.firstThrow
 				? false
 				: this.knockedDownPins.firstThrow.length + this.knockedDownPins.secondThrow.length == 10,
-			secondPairThrows: this.strikes.second
+			secondPairThrows: this.strikes.secondThrow
 				? false
 				: this.knockedDownPins.secondThrow.length + this.knockedDownPins.thirdThrow.length == 10,
 		};
