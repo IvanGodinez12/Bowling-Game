@@ -1,5 +1,17 @@
-module.exports = class LastFrame {
-	constructor({ number }) {
+import Pin from './Pin';
+import { ILastFrameConstructor, ILastFrameStrikesReturn, ILastFrameSparesReturn } from '../interfaces/LastFrame.js';
+
+export default class LastFrame {
+	public knockedDownPins: {
+		firstThrow: Array<Pin>;
+		secondThrow: Array<Pin>;
+		thirdThrow: Array<Pin>;
+	};
+	public number: number;
+	public standingPins: Array<Pin>;
+	public totalScore: number;
+
+	constructor({ number }: ILastFrameConstructor) {
 		this.knockedDownPins = {
 			firstThrow: [],
 			secondThrow: [],
@@ -10,15 +22,15 @@ module.exports = class LastFrame {
 		this.totalScore = 0;
 	}
 
-	get firstThrowScore() {
+	get firstThrowScore(): number {
 		return this.knockedDownPins.firstThrow.length;
 	}
 
-	get frameScore() {
+	get frameScore(): number {
 		return this.roundScore;
 	}
 
-	get spares() {
+	get spares(): ILastFrameSparesReturn {
 		return {
 			firstPairThrows: this.strikes.firstThrow
 				? false
@@ -29,7 +41,7 @@ module.exports = class LastFrame {
 		};
 	}
 
-	get roundScore() {
+	get roundScore(): number {
 		return (
 			this.knockedDownPins.firstThrow.length +
 			this.knockedDownPins.secondThrow.length +
@@ -37,11 +49,11 @@ module.exports = class LastFrame {
 		);
 	}
 
-	get secondThrowScore() {
+	get secondThrowScore(): number {
 		return this.knockedDownPins.secondThrow.length;
 	}
 
-	get strikes() {
+	get strikes(): ILastFrameStrikesReturn {
 		return {
 			firstThrow: this.knockedDownPins.firstThrow.length == 10,
 			secondThrow: this.knockedDownPins.secondThrow.length == 10,
@@ -49,7 +61,7 @@ module.exports = class LastFrame {
 		};
 	}
 
-	get thirdThrowScore() {
+	get thirdThrowScore(): number {
 		return this.knockedDownPins.thirdThrow.length;
 	}
-};
+}

@@ -1,10 +1,16 @@
-const Table = require('cli-table');
-const Bowl = require('./Bowl.js');
-const Frame = require('./Frame.js');
-const Pin = require('./Pin.js');
-const LastFrame = require('./LastFrame.js');
+import Table from 'cli-table';
+import Bowl from './Bowl.js';
+import Frame from './Frame.js';
+import Pin from './Pin.js';
+import LastFrame from './LastFrame.js';
+import { IGameRound, IGameLastRound } from '../interfaces/Game.js';
 
-module.exports = class Game {
+export default class Game {
+	public finalScore: number;
+	public rounds: number;
+	public roundsFrames: Array<Frame | LastFrame>;
+	public pins: Array<Pin>;
+
 	constructor() {
 		this.finalScore = 0;
 		this.rounds = 10;
@@ -12,7 +18,7 @@ module.exports = class Game {
 		this.pins = [];
 	}
 
-	setupPins() {
+	setupPins(): void {
 		this.pins = [
 			new Pin({ number: 1 }),
 			new Pin({ number: 2 }),
@@ -28,7 +34,7 @@ module.exports = class Game {
 		return;
 	}
 
-	launch() {
+	launch(): Array<Pin> {
 		const bowl = new Bowl();
 		bowl.throw();
 		for (let i = 0; i < this.pins.length; i++) {
@@ -41,7 +47,7 @@ module.exports = class Game {
 		return this.pins;
 	}
 
-	round({ number }) {
+	round({ number }: IGameRound) {
 		const frame = new Frame({ number });
 		this.launch();
 		if (this.pins.some((pin) => pin.standing === true)) {
@@ -59,14 +65,16 @@ module.exports = class Game {
 		return frame;
 	}
 
-	lastRound({ number }) {
+	lastRound({ number }: IGameLastRound) {
 		const lastFrame = new LastFrame({ number });
 		const possibleThrows = ['firstThrow', 'secondThrow', 'thirdThrow'];
 		for (const throwTurn of possibleThrows) {
 			this.launch();
-			lastFrame.knockedDownPins[throwTurn] = this.pins.filter((pin) => pin.standing === false);
+			lastFrame.knockedDownPins[throwTurn as 'firstThrow' | 'secondThrow' | 'thirdThrow'] = this.pins.filter(
+				(pin) => pin.standing === false
+			);
 			this.pins = this.pins.filter((pin) => pin.standing === true);
-			if (lastFrame.strikes[throwTurn]) {
+			if (lastFrame.strikes[throwTurn as 'firstThrow' | 'secondThrow' | 'thirdThrow']) {
 				if (possibleThrows[possibleThrows.indexOf(throwTurn)] != 'thirdThrow') this.setupPins();
 			} else if (possibleThrows[possibleThrows.indexOf(throwTurn)] == 'secondThrow') {
 				if (lastFrame.spares.firstPairThrows) this.setupPins();
@@ -145,4 +153,4 @@ module.exports = class Game {
 		if (print) this.print();
 		return this.roundsFrames;
 	}
-};
+}

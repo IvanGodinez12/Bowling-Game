@@ -1,5 +1,5 @@
-const { describe, expect, it } = require('@jest/globals');
-const LastFrame = require('../src/classes/LastFrame.js');
+import { describe, expect, it } from '@jest/globals';
+import LastFrame from '../src/classes/LastFrame.js';
 
 describe('LastFrame', () => {
 	const lastFrame = new LastFrame({ number: 10 });

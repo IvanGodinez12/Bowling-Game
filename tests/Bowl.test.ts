@@ -1,5 +1,5 @@
-const { describe, expect, it } = require('@jest/globals');
-const Bowl = require('../src/classes/Bowl.js');
+import { describe, expect, it } from '@jest/globals';
+import Bowl from '../src/classes/Bowl.js';
 
 describe('Bowl', () => {
 	const bowl = new Bowl();

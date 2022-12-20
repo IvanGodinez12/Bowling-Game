@@ -1,5 +1,5 @@
-const { describe, expect, it } = require('@jest/globals');
-const Pin = require('../src/classes/Pin.js');
+import { describe, expect, it } from '@jest/globals';
+import Pin from '../src/classes/Pin.js';
 
 describe('Pin', () => {
 	const pin = new Pin({ number: 1 });

@@ -3,7 +3,7 @@
  * https://jestjs.io/docs/configuration
  */
 
-module.exports = {
+export default {
 	// All imported modules in your tests should be mocked automatically
 	// automock: false,
 
@@ -20,15 +20,13 @@ module.exports = {
 	collectCoverage: true,
 
 	// An array of glob patterns indicating a set of files for which coverage information should be collected
-	// collectCoverageFrom: undefined,
+	collectCoverageFrom: ['src/**/*.ts', 'src/**/*.mts', '!src/**/*.d.ts', '!src/**/*.d.mts'],
 
 	// The directory where Jest should output its coverage files
 	coverageDirectory: 'coverage',
 
 	// An array of regexp pattern strings used to skip coverage collection
-	// coveragePathIgnorePatterns: [
-	//   "\\\\node_modules\\\\"
-	// ],
+	coveragePathIgnorePatterns: ['\\\\node_modules\\\\', './src/interfaces'],
 
 	// Indicates which provider should be used to instrument code for coverage
 	coverageProvider: 'v8',
@@ -88,7 +86,9 @@ module.exports = {
 	// ],
 
 	// A map from regular expressions to module names or to arrays of module names that allow to stub out resources with a single module
-	// moduleNameMapper: {},
+	moduleNameMapper: {
+		'^(\\.{1,2}/.*)\\.(m)?js$': '$1',
+	},
 
 	// An array of regexp pattern strings, matched against all module paths before considered 'visible' to the module loader
 	// modulePathIgnorePatterns: [],
@@ -100,7 +100,7 @@ module.exports = {
 	// notifyMode: "failure-change",
 
 	// A preset that is used as a base for Jest's configuration
-	// preset: undefined,
+	preset: 'ts-jest/presets/default-esm',
 
 	// Run tests from one or more projects
 	// projects: undefined,
@@ -144,7 +144,7 @@ module.exports = {
 	// snapshotSerializers: [],
 
 	// The test environment that will be used for testing
-	// testEnvironment: "jest-environment-node",
+	testEnvironment: 'node',
 
 	// Options that will be passed to the testEnvironment
 	// testEnvironmentOptions: {},
@@ -164,7 +164,7 @@ module.exports = {
 	// ],
 
 	// The regexp pattern or array of patterns that Jest uses to detect test files
-	// testRegex: [],
+	testRegex: '(/__tests__/.*|(\\.|/)(test|spec))\\.(m)?ts$',
 
 	// This option allows the use of a custom results processor
 	// testResultsProcessor: undefined,
@@ -173,7 +173,9 @@ module.exports = {
 	// testRunner: "jest-circus/runner",
 
 	// A map from regular expressions to paths to transformers
-	// transform: undefined,
+	transform: {
+		'^.+\\.m?[tj]s?$': ['ts-jest', { useESM: true }],
+	},
 
 	// An array of regexp pattern strings that are matched against all source file paths, matched files will skip transformation
 	// transformIgnorePatterns: [

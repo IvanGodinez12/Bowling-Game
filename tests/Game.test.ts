@@ -1,5 +1,5 @@
-const { describe, expect, it } = require('@jest/globals');
-const Game = require('../src/classes/Game.js');
+import { describe, expect, it } from '@jest/globals';
+import Game from '../src/classes/Game.js';
 
 describe('LastFrame', () => {
 	const game = new Game();

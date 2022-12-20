@@ -1,5 +1,5 @@
-const { describe, expect, it } = require('@jest/globals');
-const Frame = require('../src/classes/Frame.js');
+import { describe, expect, it } from '@jest/globals';
+import Frame from '../src/classes/Frame.js';
 
 describe('Frame', () => {
 	const frame = new Frame({ number: 1 });
