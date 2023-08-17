@@ -1,0 +1,15 @@
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\bin\Debug\net7.0\Bowling.exe
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\bin\Debug\net7.0\Bowling.deps.json
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\bin\Debug\net7.0\Bowling.runtimeconfig.json
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\bin\Debug\net7.0\Bowling.dll
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\bin\Debug\net7.0\Bowling.pdb
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.csproj.AssemblyReference.cache
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.AssemblyInfoInputs.cache
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.AssemblyInfo.cs
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.csproj.CoreCompileInputs.cache
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.dll
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\refint\Bowling.dll
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.pdb
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\Bowling.genruntimeconfig.cache
+C:\Users\ivano\Documents\Repositories\aprendiendo-c-sharp\Bowling\obj\Debug\net7.0\ref\Bowling.dll
